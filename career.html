@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advaitecs | Training Minds, Innovating Solutions</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<header class="main-header">
+
+    <!-- MOBILE OVERLAY -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <nav class="navbar">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <img src="https://i.ibb.co/rGSkNBsb/Adv-Main-Logo-V5.png" alt="Advaitecs Logo">
+        </div>
+
+        <div class="nav-right">
+
+            <!-- Desktop Contact -->
+            <div class="contact-number">+91 96039 92299</div>
+
+            <!-- Hamburger -->
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+
+            <!-- MAIN MENU -->
+            <ul class="nav-links" id="nav-links">
+
+                <li><a href="index.html">Home</a></li>
+
+                <!-- DESKTOP DROPDOWN ONLY -->
+                <li class="dropdown desktop-only">
+                    <a href="#">Programs ▾</a>
+                    <ul class="dropdown-content">
+                        <li><a href="programs/ai-training.html">AI Training</a></li>
+                        <li><a href="programs/cloud-technologies.html">Cloud Technologies</a></li>
+                        <li><a href="programs/cyber-security.html">Cyber Security</a></li>
+                    </ul>
+                </li>
+
+                <!-- MOBILE MENU TRIGGER -->
+                <li class="mobile-parent mobile-only" data-menu="programs">Programs ▾</li>
+
+                <!-- DESKTOP DROPDOWN -->
+                <li class="dropdown desktop-only">
+                    <a href="#">Workshops ▾</a>
+                    <ul class="dropdown-content">
+                        <li><a href="workshops/schools.html">Schools</a></li>
+                        <li><a href="workshops/professional.html">Professional</a></li>
+                    </ul>
+                </li>
+
+                <!-- MOBILE MENU TRIGGER -->
+                <li class="mobile-parent mobile-only" data-menu="workshops">Workshops ▾</li>
+
+                <li><a href="career.html">Careers</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <!-- RIGHT SIDE MOBILE SUBMENU -->
+    <div id="subMenu" class="sub-menu-panel mobile-only">
+        <div class="sub-menu-back" id="subMenuBack">← Back</div>
+        <h3 id="subMenuTitle"></h3>
+        <ul id="subMenuList"></ul>
+    </div>
+
+</header>
+
+<script src="js/main.js"></script>
+
+  <!-- ===== Careers Heading ===== -->
+<section class="careers-heading-section">
+  <h1>Current Openings</h1>
+</section>
+<section class="job-section">
+
+  <!-- Job 1 -->
+  <div class="job-card">
+    <button class="job-header">
+      <span>AI Trainer & Development Support</span>
+      <span class="toggle-symbol">+</span>
+    </button>
+
+    <div class="job-content">
+      <p><strong>Job Title:</strong> AI & Data Science Trainer / Developer</p>
+      <p><strong>Company:</strong> Advaitecs Private Limited</p>
+      <p><strong>Location:</strong> Vijayawada / Vizag, Andhra Pradesh</p>
+      <p><strong>Experience:</strong> 0–3 Years</p>
+      <p><strong>Employment Type:</strong> Full-time, Permanent</p>
+
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Conduct structured training sessions on AI tools.</li>
+        <li>Facilitate hands-on ML & DS project-based learning.</li>
+        <li>Develop curriculum materials and lab exercises.</li>
+        <li>Stay updated on AI, ML, DL, and Data Analytics trends.</li>
+        <li>Guide and mentor students on projects.</li>
+      </ul>
+
+      <p><strong>How to Apply:</strong> Send resume to: <a href="mailto:hr@advaitecs.com">hr@advaitecs.com</a></p>
+    </div>
+  </div>
+
+  <!-- Job 2 -->
+  <div class="job-card">
+    <button class="job-header">
+      <span>Cloud Developer Trainer</span>
+      <span class="toggle-symbol">+</span>
+    </button>
+
+    <div class="job-content">
+      <p><strong>Location:</strong> Vijayawada, Andhra Pradesh (On-site only)</p>
+      <p><strong>Company:</strong> Advaitecs Private Limited</p>
+      <p><strong>Experience:</strong> 0–3 Years</p>
+      <p><strong>Employment Type:</strong> Full-Time | Permanent</p>
+
+      <h4>Key Responsibilities</h4>
+      <ul>
+        <li>Deliver training programs on AWS, Azure, or GCP.</li>
+        <li>Create & maintain lab exercises & learning materials.</li>
+        <li>Support cloud migration projects.</li>
+        <li>Help students prepare for certifications.</li>
+        <li>Stay updated with latest cloud tools & trends.</li>
+      </ul>
+      <p><strong>How to Apply:</strong> Send resume to <a href="mailto:hr@advaitecs.com">hr@advaitecs.com</a></p>
+    </div>
+  </div>
+
+</section>
+<script>
+document.querySelectorAll(".job-header").forEach(header => {
+  header.addEventListener("click", function () {
+    let content = this.nextElementSibling;
+    let symbol = this.querySelector(".toggle-symbol");
+
+    // Toggle visibility
+    if (content.style.display === "block") {
+      content.style.display = "none";
+      symbol.textContent = "+";
+    } else {
+      content.style.display = "block";
+      symbol.textContent = "–";
+    }
+  });
+});
+</script>

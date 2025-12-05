@@ -1,0 +1,2938 @@
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Segoe UI", sans-serif; }
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 50px;
+    background: #f1faee;
+    height: 120px;
+}
+
+.logo img { width: 320px; height: auto; }
+
+/* RIGHT SIDE */
+.nav-right { display: flex; flex-direction: column; align-items: flex-end; }
+.contact-number { font-weight: 700; margin-bottom: 10px; }
+
+/* NAV LINKS (DESKTOP) */
+.nav-links { display: flex; gap: 45px; list-style: none; }
+.nav-links a { text-decoration:none; color:#000; font-weight:500; }
+
+/* DESKTOP DROPDOWN */
+.dropdown { position:relative; }
+.dropdown-content {
+    display:none;
+    position:absolute;
+    top:100%;
+    left:50%;
+    transform:translateX(-50%);
+    background:#fff;
+    list-style:none;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    padding:10px 0;
+    border-radius:6px;
+}
+.dropdown:hover .dropdown-content { display:block; }
+.dropdown-content li a { display:block; padding:10px 20px; color:#000; }
+
+/* HAMBURGER */
+.hamburger { display:none; cursor:pointer; flex-direction:column; gap:5px; }
+.hamburger span {
+    width:25px;
+    height:3px;
+    background:#000;
+    border-radius:2px;
+}
+
+/* MOBILE MODE */
+@media (max-width:1200px){
+
+    .contact-number { display:none; }
+    .hamburger { display:flex; }
+    .navbar { padding:10px 20px; }
+
+    .nav-links {
+        position: fixed;
+        top:0;
+        left:-280px;
+        width:260px;
+        height:100vh;
+        flex-direction:column;
+        background:#f1faee;
+        padding-top:60px;
+        gap:20px;
+        transition:left .3s ease;
+        z-index:2000;
+    }
+    .nav-links.show { left:0; }
+
+    .dropdown-content { display:none !important; }
+
+    /* Right Submenu Panel */
+    .sub-menu-panel {
+        position:fixed;
+        top:0;
+        right:-300px;
+        width:280px;
+        height:100vh;
+        background:#fff;
+        padding:20px;
+        box-shadow:-3px 0 10px rgba(0,0,0,0.2);
+        transition:right .3s ease;
+        z-index:3000;
+    }
+    .sub-menu-panel.show { right:0; }
+
+    .sub-menu-back {
+        cursor:pointer;
+        margin-bottom:15px;
+        font-weight:600;
+    }
+
+    #subMenuList li { list-style:none; margin:12px 0; }
+    #subMenuList li a { text-decoration:none; color:#000; }
+
+    /* Overlay */
+    .mobile-overlay {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:rgba(0,0,0,0.5);
+        display:none;
+        z-index:1500;
+    }
+    .mobile-overlay.show { display:block; }
+}
+
+/* HIDE SUBMENU ON DESKTOP */
+.mobile-only {
+    display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+}
+
+/* SHOW ONLY ON MOBILE */
+@media (max-width:1200px){
+    .mobile-only {
+        display:block !important;
+        visibility:visible !important;
+        opacity:1 !important;
+    }
+}
+/* FIX DESKTOP DROPDOWN NOT SHOWING */
+@media (min-width:1201px) {
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #fff;
+        padding: 10px 0;
+        list-style: none;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-radius: 6px;
+        z-index: 999;
+    }
+    .dropdown:hover .dropdown-content {
+        display: block !important;
+    }
+}
+@media (min-width:1201px) {
+    .sub-menu-panel { display:none !important; }
+}
+
+/* ================= HERO BANNER ================= */
+.hero-banner {
+  width: 100%;
+  height: 70vh;                 /* laptop height */
+  max-height: 650px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Banner image */
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* keeps image clean + sharp */
+  object-position: center;      /* always centered */
+  display: block;
+}
+
+/* Text on image */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 7%;
+  transform: translateY(-50%);
+  color: #ffffff;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.25;
+  max-width: 600px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+}
+/* Prevent mobile dropdown arrow rotating */
+.dropdown.active > a {
+  color: #00509e;
+}
+
+/* Show dropdown contents in mobile */
+@media (max-width: 1200px) {
+  .dropdown.active .dropdown-content {
+    display: block !important;
+  }
+}
+
+
+/* ========== Responsive (Tablet) ========== */
+@media (max-width: 992px) {
+  .hero-banner {
+    height: 50vh;
+  }
+
+  .hero-text {
+    font-size: 1.8rem;
+    left: 5%;
+    max-width: 80%;
+  }
+}
+
+/* ========== Responsive (Mobile) ========== */
+@media (max-width: 600px) {
+  .hero-banner {
+    height: 40vh;
+  }
+
+  .hero-text {
+    font-size: 1.2rem;
+    left: 4%;
+    max-width: 90%;
+  }
+}
+/* ================= WELCOME TEXT SECTION ================= */
+.welcome-section {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;         /* Center the text */
+  max-width: 1000px;          /* Controls wrapping on big screens */
+  margin: 0 auto;
+  line-height: 1.4;
+  padding: 0 10px;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .welcome-section h2 {
+    font-size: 1.7rem;
+    max-width: 90%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .welcome-section h2 {
+    font-size: 1.3rem;
+    max-width: 95%;
+    line-height: 1.5;
+  }
+}
+/* ================= WELCOME TEXT SECTION ================= */
+.welcome-section {
+  width: 100%;
+  padding: 25px 20px 10px;   /* reduced top & bottom spacing */
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0b3a66;
+  text-align: center;
+  max-width: 1000px;
+  line-height: 1.4;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .welcome-section {
+    padding: 18px 15px 6px;  /* even smaller for mobile */
+  }
+  .welcome-section h2 {
+    font-size: 1.3rem;
+  }
+}
+
+/* ================= OUR PROGRAMS TITLE ================= */
+.programs-title {
+  width: 100%;
+  padding: 10px 20px 0px;    /* reduced space above this title */
+  display: flex;
+  justify-content: center;
+}
+
+.programs-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color:#000000;
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .programs-title h2 {
+    font-size: 1.5rem;
+  }
+}
+/* ================= OUR PROGRAM CARDS ================= */
+.programs-section {
+  max-width: 1200px;
+  margin: 30px auto 60px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.program-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+.program-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.program-content {
+  padding: 20px;
+}
+
+.program-content h3 {
+  font-size: 1.4rem;
+  color: #0b3a66;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.program-content p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.learn-more {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid #0b3a66;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #0b3a66;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.learn-more:hover {
+  background: #0b3a66;
+  color: #fff;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .programs-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 600px) {
+  .programs-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .program-card img {
+    height: 200px;
+  }
+
+  .program-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .program-content p {
+    font-size: 0.95rem;
+  }
+}
+/* ===========================
+   OUR WORKSHOPS SECTION
+   =========================== */
+
+.workshops-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.workshops-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+/* GRID */
+.workshops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+/* CARD */
+.workshop-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: 0.3s;
+}
+
+.workshop-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+.workshop-card img {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.workshop-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0b3a66;
+  margin-bottom: 10px;
+}
+
+.workshop-card p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* BUTTON ROW (3 Buttons Centered) */
+.workshop-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Outline Buttons */
+.btn-outline {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #0b3a66;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  color: #0b3a66;
+}
+
+.btn-outline:hover {
+  background: #0b3a66;
+  color: #fff;
+}
+
+/* Filled Button */
+.btn-fill {
+  flex: 1;
+  padding: 10px 12px;
+  background: #0b3a66;
+  color: #fff;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-fill:hover {
+  opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .workshops-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .workshop-card img {
+    height: 180px;
+  }
+
+  .workshop-buttons {
+    flex-direction: column;
+  }
+
+  .btn-outline, .btn-fill {
+    width: 100%;
+  }
+}
+/* ====== Button Row ====== */
+.workshop-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* ====== Arrow Buttons (Same Style as Learn More) ====== */
+.btn-arrow {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1px solid #0b3a66;
+  border-radius: 10px;
+  color: #0b3a66;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-arrow:hover {
+  background: #0b3a66;
+  color: #fff;
+}
+
+/* Blue filled button (Learn More) */
+.btn-arrow.primary {
+  background: #0b3a66;
+  color: #fff;
+}
+
+.btn-arrow.primary:hover {
+  background: #06284a;
+}
+
+/* Mobile support */
+@media (max-width: 600px) {
+  .workshop-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-arrow {
+    text-align: center;
+    width: 100%;
+  }
+}
+/* ========== 3 BUTTON ROW FOR FIRST BOX ========== */
+.workshop-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: nowrap; /* stay in one line */
+}
+
+/* ========== BUTTON STYLE (Same as Learn More) ========== */
+/* ========== UNIFIED WHITE BUTTONS (ALL 3 IN FIRST CARD) ========== */
+.btn-arrow {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1.5px solid #0b3a66;
+  border-radius: 10px;
+  color: #0b3a66;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+  font-size: 1rem;
+  white-space: nowrap;
+  background: #ffffff;
+}
+
+/* Hover turns blue */
+.btn-arrow:hover {
+  background: #0b3a66;
+  color: #ffffff;
+}
+
+/* Button container (keeps them in one line on desktop) */
+.workshop-buttons {
+  display: flex;
+  gap: 18px;
+  margin-top: 20px;
+  flex-wrap: nowrap;
+}
+
+/* ========== SECOND CARD (Professionals) BLUE BUTTON ONLY ========== */
+.btn-blue {
+  display: inline-block;
+  padding: 14px 24px;
+  width: 100%;
+  text-align: center;
+  background: #0b3a66;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-blue:hover {
+  background: #06284a;
+}
+
+/* ========== RESPONSIVE (Mobile) ========== */
+@media (max-width: 768px) {
+  .workshop-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-arrow {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* ================= FORCE WHITE BUTTON STYLE ================= */
+.workshop-buttons .btn-arrow {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 2px solid #0b3a66 !important;
+  border-radius: 10px;
+  color: #0b3a66 !important;
+  background: #ffffff !important;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* Hover → solid blue */
+.workshop-buttons .btn-arrow:hover {
+  background: #0b3a66 !important;
+  color: #ffffff !important;
+}
+
+/* Button row */
+.workshop-buttons {
+  display: flex;
+  gap: 18px;
+  margin-top: 20px;
+  flex-wrap: nowrap;
+}
+
+
+/* ================= SECOND CARD BLUE BUTTON ================= */
+.prof-card .btn-blue {
+  display: inline-block;
+  padding: 14px 24px;
+  width: 100%;
+  text-align: center;
+  background: #0b3a66 !important;
+  color: #ffffff !important;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.prof-card .btn-blue:hover {
+  background: #06284a !important;
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+  .workshop-buttons {
+    flex-direction: column !important;
+  }
+  .btn-arrow {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+/* UNIVERSAL ARROW BUTTON STYLE (White button with border) */
+.btn-arrow {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 2px solid #0b3a66 !important;
+  border-radius: 10px;
+  color: #0b3a66 !important;
+  background: #ffffff !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: 0.3s ease;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* Hover effect: turn blue */
+.btn-arrow:hover {
+  background: #0b3a66 !important;
+  color: #ffffff !important;
+}
+
+/* BUTTON ROW LAYOUT */
+.workshop-buttons {
+  display: flex;
+  gap: 18px;
+  margin-top: 20px;
+  flex-wrap: nowrap;
+}
+
+/* Second card button should align left */
+.second-buttons {
+  justify-content: flex-start;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .workshop-buttons {
+    flex-direction: column;
+  }
+  .btn-arrow {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ================= WHY CHOOSE US TITLE ================= */
+.why-title {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto 10px;
+  padding: 0 20px;
+}
+
+.why-title h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin: 0;
+}
+
+/* Mobile Title */
+@media (max-width: 600px) {
+  .why-title h2 { font-size: 1.6rem; }
+}
+/* Section Title */
+.why-title h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 40px;
+}
+
+/* SECTION WRAPPER */
+.why-choose-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+/* ROW (Controls exact layout) */
+.why-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+/* CARD */
+.why-card {
+    background: #eef2f5;
+    border-radius: 14px;
+    padding: 35px 25px;
+    width: 30%;       /* Forces exactly 3 cards in first row */
+    min-width: 280px;
+    max-width: 340px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+/* ICON */
+.why-card img.why-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+/* CARD TEXT */
+.why-card h3 {
+    font-size: 1.2rem;
+    color: #0b3a66;
+    margin-bottom: 10px;
+}
+
+.why-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #444;
+}
+
+/* ======================================= */
+/* MOBILE FIX — FULL WIDTH 1 CARD PER ROW */
+/* ======================================= */
+@media (max-width: 600px) {
+    .why-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .why-card {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/*===== Contact Section ===== */
+.contact-section {
+  background-color: white;
+  color: black;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  width: 85%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+/* Left Side Info */
+.contact-info {
+  flex: 1;
+  min-width: 330px;
+}
+
+.contact-info h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.contact-info h3 {
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+/* Social Icons */
+.social-icons img {
+  width: 32px;
+  margin-right: 12px;
+  transition: 0.3s ease;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+/* Right Side Form */
+.contact-form {
+  flex: 1;
+  min-width: 330px;
+  background-color: #0064e6;
+  padding: 25px 30px;
+  border-radius: 10px;
+}
+
+.contact-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+.form-agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.form-agree input {
+  margin-top: 4px;
+  width: 18px;
+  height: 18px;
+  accent-color: #00c853;
+}
+
+.contact-form button {
+  background: #00c851;
+  padding: 12px;
+  width: 100%;
+  color: white;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.contact-form button:hover {
+  background: #009e3a;
+}
+
+#statusMessage {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 15px;
+}
+.social-icons a {
+  text-decoration: none !important;
+}
+
+.social-icons img {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+/* ===== Contact Page Banner ===== */
+.contact-banner {
+    width: 100%;
+    height: 500px;           /* same as index page */
+    overflow: hidden;
+}
+
+.contact-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;       /* crops perfectly like index */
+    display: block;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .contact-banner {
+        height: 250px;       /* reduced height for mobile */
+    }
+
+    .contact-banner img {
+        object-fit: cover;
+    }
+}
+/* ===== Careers Page Heading ===== */
+.careers-heading-section {
+  width: 100%;
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+.careers-heading-section h1 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #0a2a43; /* dark navy blue */
+  margin: 0;
+  letter-spacing: 1px;
+}
+/*career Page Job Roles*/
+.join-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.join-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #e6e6e6;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.btn-get-started {
+  display: inline-block;
+  background-color: #11c85a;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-get-started:hover {
+  background-color: #11c85a;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .join-us {
+    padding: 70px 8%;
+  }
+
+  .join-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .join-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .join-content p {
+    font-size: 1rem;
+  }
+}
+/* Job Section */
+.job-section {
+  width: 90%;
+  max-width: 900px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Job Card Container */
+.job-card {
+  background: #f8f9ff;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+/* Header */
+.job-header {
+  width: 100%;
+  padding: 18px 20px;
+  background: white;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #222;
+}
+
+/* Symbol */
+.toggle-symbol {
+  font-size: 22px;
+  font-weight: bold;
+  color: #6c47ff;
+}
+
+/* Content (hidden by default) */
+.job-content {
+  display: none;
+  padding: 20px 25px;
+  background: #eef1ff;
+  border-top: 1px solid #d9d9d9;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.job-content ul {
+  margin-left: 20px;
+}
+/* ===== ABOUT PAGE SECTION ===== */
+
+.about-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    width: 90%;
+    max-width: 1300px;
+    margin: 50px auto;
+}
+
+/* LEFT SIDE (Vision + Mission boxes) */
+.about-left {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* INDIVIDUAL BOXES */
+.about-box {
+    background: #f4f7ff;
+    padding: 35px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    text-align: left;        /* LEFT aligned */
+}
+
+.about-box h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #083d77;
+    margin-bottom: 20px;
+}
+
+.about-box p {
+    text-align: justify;     /* JUSTIFY text */
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* RIGHT SIDE IMAGE */
+.about-right {
+    flex: 0.8;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-right img {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 14px;
+    object-fit: cover;
+}
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+
+    .about-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .about-right {
+        display: none;    /* HIDE IMAGE ON MOBILE */
+    }
+
+    .about-box {
+        width: 100%;
+        padding: 22px;
+    }
+
+    .about-box p {
+        text-align: justify;   /* keep justified */
+        font-size: 16px;
+    }
+}
+/* ===== Meet Our Team Section ===== */
+/* ===== Meet Our Team Section ===== */
+
+.team-intro {
+    width: 85%;
+    max-width: 900px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.team-intro h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #083d77;
+    margin-bottom: 20px;
+}
+
+.team-intro p {
+    font-size: 18px;
+    line-height: 1.7;
+    text-align: justify;
+    margin-bottom: 15px;
+    color: #333;
+
+    /* FIX WORD SPACING ISSUES */
+    word-spacing: 0px;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .team-intro {
+        width: 92%;
+        margin: 30px auto;
+    }
+
+    .team-intro h2 {
+        font-size: 26px;
+    }
+
+    .team-intro p {
+        font-size: 15.5px;
+        line-height: 1.65;
+        text-align: justify;
+
+        /* EVEN TIGHTER MOBILE FIX */
+        word-spacing: -1px;
+        hyphens: auto;
+    }
+}
+
+/* Team Section */
+.team-section {
+  width: 100%;
+  padding: 60px 0;
+  background: #f8f9fc;
+}
+
+.team-heading {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #0a316c;
+  margin-bottom: 40px;
+}
+
+.team-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 35px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.team-card {
+  background: #ffffff;
+  padding: 25px 28px;
+  border-radius: 12px;
+  width: 360px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.team-card h3 {
+  font-size: 22px;
+  margin-bottom: 5px;
+  color: #0a316c;
+  font-weight: 700;
+}
+
+.team-card h4 {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.team-card p {
+  text-align: justify;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #333;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .team-card {
+    width: 90%;
+  }
+}
+/* CTA Section */
+.cta-section {
+  background: #006eff;
+  color: #ffffff;
+  padding: 80px 20px;
+  text-align: center; /* Center headings & button */
+}
+
+.cta-content {
+  max-width: 900px;
+  margin: auto; /* Center the whole block */
+}
+
+/* Headings */
+.cta-content h2 {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.cta-content h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Paragraph (JUSTIFIED) */
+.cta-content p {
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: justify;   /* Keep justified */
+  margin: 0 auto 30px auto;
+  max-width: 850px;
+}
+
+/* Button centered */
+.cta-btn {
+  display: inline-block;
+  background: #00c851;
+  padding: 12px 30px;
+  color: white;
+  font-size: 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  margin-top: 10px;
+}
+
+.cta-btn:hover {
+  background: #009e3a;
+}
+
+/* Footer */
+.cta-footer {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .cta-content h2 {
+    font-size: 28px;
+  }
+
+  .cta-content h3 {
+    font-size: 22px;
+  }
+
+  .cta-content p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .cta-btn {
+    font-size: 16px;
+    padding: 10px 22px;
+  }
+}
+/* ===== MOBILE NAVIGATION (WORKING) ===== */
+@media (max-width: 1200px) {
+
+  /* NAVBAR layout */
+  .navbar {
+    padding: 15px 20px;
+    height: auto;
+  }
+
+  /* Logo small */
+  .logo img {
+    width: 180px;
+  }
+
+  /* Contact number hidden */
+  .contact-number {
+    display: none;
+  }
+
+  /* Right container (hamburger + menu) */
+  .nav-right {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    gap: 15px;
+  }
+
+  /* HAMBURGER visible */
+  .hamburger {
+    display: flex !important;
+    cursor: pointer;
+  }
+
+  /* MOBILE MENU (HIDDEN INITIALLY) */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -260px;              /* Hidden */
+    width: 250px;
+    height: 100vh;
+    background-color: #f1faee;
+    padding: 60px 20px;
+    flex-direction: column;
+    gap: 20px;
+    display: flex;
+    transition: left 0.3s ease;
+    z-index: 2000;
+  }
+
+  /* SHOW MENU */
+  .nav-links.show {
+    left: 0;
+  }
+
+  /* Dropdown content inside menu */
+  .dropdown-content {
+    display: none !important;
+    position: static;
+    background: transparent;
+    box-shadow: none;
+    padding-left: 20px;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: block !important;
+  }
+
+  /* Overlay for background dim */
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    z-index: 1500;
+  }
+
+  .mobile-overlay.show {
+    display: block;
+  }
+}
+/* ===== About Vision & Mission Section ===== */
+.about-vm-section {
+  width: 100%;
+  padding: 50px 8%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;        /* allows mobile stacking */
+}
+
+/* Individual Box */
+.vm-box {
+  flex: 1;
+  min-width: 320px;
+  max-width: 550px;
+  background: #f5f9ff;
+  border-radius: 18px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Icon */
+.vm-icon {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+/* Headings */
+.vm-box h2 {
+  font-size: 1.8rem;
+  color: #003366;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Paragraph Text */
+.vm-box p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #444;
+  text-align: justify;
+}
+
+/* ===== Responsive for Mobile ===== */
+@media (max-width: 768px) {
+  .about-vm-section {
+    padding: 30px 5%;
+    gap: 20px;
+  }
+
+  .vm-box {
+    padding: 30px 20px;
+  }
+
+  .vm-icon {
+    width: 65px;
+    height: 65px;
+  }
+
+  .vm-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .vm-box p {
+    font-size: 1rem;
+  }
+}
+/* ===== Meet Our Team Section (Reduced Spacing) ===== */
+.team-intro {
+  width: 100%;
+  padding: 20px 10% 50px;   /* ⬅ reduced top padding from 60px to 20px */
+  text-align: center;
+  margin-top: -20px;        /* ⬅ pulls section slightly upward */
+}
+
+.team-intro h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #003366;
+  margin-bottom: 15px;      /* reduced */
+}
+
+.team-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #444;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+/* Mobile View Fix */
+@media (max-width: 992px) {
+  .team-section {
+    grid-template-columns: 1fr;
+    padding: 5px 6% 20px;   /* reduced spacing */
+  }
+
+  .team-card {
+    padding: 18px;
+  }
+}
+/* Fix spacing issue for mobile */
+@media (max-width: 768px) {
+  .team-card p {
+    text-align: center;
+  }
+}
+/* ================= TEAM SECTION ================= */
+.team-section {
+  width: 100%;
+  padding: 30px 5% 60px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  justify-content: center;
+  align-items: flex-start;
+}
+.team-card {
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  text-align: left;
+}
+
+.team-card h3 {
+  color: #003366;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.team-card .role {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.team-card p {
+  color: #444;
+  line-height: 1.7;
+  font-size: 1rem;
+  text-align: justify;
+  margin-bottom: 14px;
+}
+.team-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.team-section {
+  width: 100%;
+  max-width: 1300px;        /* keeps left and right equal */
+  margin: auto;             /* centers the grid */
+  padding: 5px 20px 25px;   /* reduced spacing */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+/* MOBILE RESPONSIVE */
+@media (max-width: 992px) {
+  .team-section {
+    grid-template-columns: 1fr;
+    max-width: 600px;     /* better reading width */
+    padding: 5px 16px 20px;
+  }
+}
+.team-card p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Fix spacing issue for mobile */
+@media (max-width: 768px) {
+  .team-card p {
+    text-align: left;
+  }
+}
+.team-card p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+/* Remove right-side spacing issue on mobile */
+@media (max-width: 768px) {
+
+  .team-section {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    overflow-x: hidden !important;
+  }
+
+  .team-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 20px !important;
+    margin: 0 auto 25px auto !important;
+    box-sizing: border-box !important;
+  }
+
+  body, html {
+    overflow-x: hidden !important;
+  }
+}
+
+/* ===========================
+   CTA Section Below Hero
+=========================== */
+.home-call-to-action {
+  width: 100%;
+  background: #0d6efd; /* blue background */
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-content {
+  max-width: 900px;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Headings */
+.cta-content h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cta-content h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+/* Paragraph */
+.cta-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Button */
+.cta-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #22c55e;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #1ea34e;
+}
+
+
+/* ===========================
+   MOBILE RESPONSIVE FIX
+=========================== */
+@media (max-width: 768px) {
+  .cta-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .cta-content p {
+    text-align: center; /* prevents spacing issues */
+  }
+}
+/* HIDE ON MOBILE */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+@media (max-width:1200px){
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+}
+
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* centers button */
+}
+/* FIX: Center button on all screens */
+.cta-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ================= TRAINING HIGHLIGHTS SECTION ================= */
+.highlights-section {
+    width: 100%;
+    padding: 60px 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.highlights-section h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #003366;
+    max-width: 900px;
+    text-align: center;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .highlights-section h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .highlights-section {
+        padding: 40px 15px;
+    }
+    .highlights-section h2 {
+        font-size: 1.6rem;
+    }
+}
+/* ============ AI TRAINING 4-BOX GRID ============ */
+
+.ai-grid {
+    width: 100%;
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+/* EACH ROW = 2 BOXES */
+.ai-row {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 40px;
+}
+
+/* INDIVIDUAL BOX */
+.ai-box {
+    flex: 1;
+    background: #f7f9fc;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.ai-icon {
+    width: 55px;
+    margin-bottom: 15px;
+}
+
+.ai-box h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #003366;
+}
+
+.ai-box p {
+    font-size: 1rem;
+    line-height: 1.65;
+    text-align: justify;
+}
+
+/* ============ TABLET ============ */
+@media (max-width: 992px) {
+
+    .ai-row {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .ai-box {
+        width: 100%;
+    }
+}
+
+/* ============ MOBILE ============ */
+@media (max-width: 600px) {
+
+    .ai-grid {
+        padding: 30px 20px;
+        gap: 30px;
+    }
+
+    .ai-box {
+        padding: 20px;
+    }
+
+    .ai-box h3 {
+        font-size: 1.3rem;
+    }
+
+    .ai-box p {
+        font-size: 0.95rem;
+    }
+
+    .ai-icon {
+        width: 48px;
+    }
+}
+/* ================= CLOUD INTRO SECTION ================= */
+.cloud-intro {
+    width: 100%;
+    max-width: 900px;
+    margin: 50px auto 40px auto;   /* perfectly centered */
+    text-align: center;
+    padding: 0 20px;               /* prevents overflow on mobile */
+}
+
+.cloud-intro h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #003366;
+}
+
+.cloud-intro p {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    text-align: justify;           /* full justification */
+    text-justify: inter-word;
+    color: #333;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .cloud-intro {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    .cloud-intro h2 {
+        font-size: 1.7rem;
+        margin-bottom: 15px;
+    }
+
+    .cloud-intro p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* ========= TWO COLUMN CLEAN RESPONSIVE BOXES ========== */
+.cloud-two-box {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+/* Each box */
+.cloud-box {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(20,40,60,0.08);
+    text-align: center;
+}
+
+/* Image */
+.cloud-icon {
+    width: 110px;
+    margin: 0 auto 15px;
+    display: block;
+}
+
+/* Headings */
+.cloud-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #003b73;
+}
+
+.cloud-sub {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    color: #005cb8;
+    font-weight: 600;
+}
+
+/* Paragraphs */
+.cloud-text {
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+/* Lists */
+.cloud-box ul {
+    text-align: justify;
+    margin: 10px 0 18px 20px;
+    line-height: 1.55;
+}
+
+.cloud-box li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* MOBILE VIEW — NO SPACING ISSUES */
+@media (max-width: 900px) {
+    .cloud-two-box {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 10px;
+    }
+
+    .cloud-box {
+        padding: 20px;
+    }
+
+    .cloud-icon {
+        width: 95px;
+    }
+}
+@media (max-width: 600px) {
+
+    /* Reduce list spacing and indentation */
+    .cloud-box ul {
+        margin: 8px 0 12px 10px;
+        line-height: 1.35;
+        text-align: left;  /* prevents weird gaps */
+    }
+
+    .cloud-box li {
+        margin-bottom: 4px;
+        font-size: 0.92rem;
+    }
+
+    /* Fix paragraph spacing */
+    .cloud-text {
+        margin-bottom: 10px;
+        line-height: 1.45;
+    }
+
+    /* Reduce padding inside each box */
+    .cloud-box {
+        padding: 16px;
+    }
+}
+
+/* ================= WHY CHOOSE US SECTION ================= */
+
+.why-choose-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.why-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #003b73;
+    margin-bottom: 20px;
+}
+
+/* List Styling */
+.why-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    text-align: justify;
+    max-width: 750px;
+}
+
+.why-list li {
+    padding: 10px 0;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    line-height: 1.55;
+    position: relative;
+}
+
+/* Bullets ✔️ */
+.why-list li::before {
+    content: "✔";
+    font-weight: bold;
+    color: #0a7cff;
+    margin-right: 10px;
+}
+
+/* MOBILE FIX — no spacing issues */
+@media (max-width: 600px) {
+    .why-choose-section {
+        padding: 0 10px;
+        margin: 25px auto;
+    }
+
+    .why-title {
+        font-size: 1.5rem;
+    }
+
+    .why-list li {
+        font-size: 0.95rem;
+        padding: 8px 0;
+        text-align: justify;
+    }
+}
+/* ====== CYBER TOP SECTION ====== */
+.cyber-top-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.cyber-top-container {
+    max-width: 900px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.cyber-top-container h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #0a3d62;
+}
+
+.cyber-top-container p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    text-align: justify;
+    margin: auto;
+}
+
+/* ====== MOBILE FIX ====== */
+@media (max-width: 600px) {
+    .cyber-top-container {
+        padding: 0 12px;
+        margin: 0 auto;
+    }
+
+    .cyber-top-container h2 {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .cyber-top-container p {
+        font-size: 1rem;
+        line-height: 1.55;
+        text-align: justify;
+        margin: 0;
+        padding: 0;
+    }
+}
+/* WRAPPER – 2 columns on desktop */
+.cyber-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+/* LEFT & RIGHT columns */
+.cyber-left, .cyber-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+/* BOX STYLE */
+.cyber-box {
+    width: 100%;
+    background: #f7f9fc;
+    padding: 25px 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: justify;
+}
+
+/* HEADINGS */
+.cyber-box h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* ICON */
+.cyber-icon {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 15px;
+}
+
+/* LIST */
+.cyber-box ul {
+    padding-left: 20px;
+}
+
+.cyber-box li {
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+/* RIGHT LARGE IMAGE */
+.cyber-main-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+/* MOBILE FIX – STACK, FULL WIDTH, NO SPACING */
+@media (max-width: 900px) {
+    .cyber-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .cyber-left, .cyber-right {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .cyber-box {
+        padding: 18px 15px;
+    }
+
+    .cyber-box h2 {
+        font-size: 1.3rem;
+    }
+
+    .cyber-main-image {
+        width: 100%;
+    }
+}
+/* FIX MOBILE SPACING FOR CYBERSECURITY TEXT */
+@media (max-width: 600px) {
+    .cyber-left-box,
+    .cyber-right-box {
+        padding: 10px !important;   /* Reduce padding */
+        margin: 0 !important;        /* Remove side gaps */
+        width: 100% !important;      /* Full width */
+        box-sizing: border-box !important;
+    }
+
+    .cyber-left-box ul,
+    .cyber-right-box ul {
+        padding-left: 15px !important; /* bullet proper spacing */
+    }
+}
+/* REAL FIX — MOBILE SPACING CORRECTION */
+@media (max-width: 600px) {
+
+    /* Reduce box padding */
+    .cyber-box {
+        padding: 14px 12px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* Fix paragraph spacing */
+    .cyber-box p {
+        font-size: 0.95rem;
+        line-height: 1.45;
+        margin-bottom: 10px !important;
+        text-align: justify;
+    }
+
+    /* Fix bullet list spacing */
+    .cyber-box ul {
+        padding-left: 15px !important;
+        margin: 8px 0 !important;
+        line-height: 1.35 !important;
+    }
+
+    .cyber-box li {
+        margin-bottom: 6px !important;
+        font-size: 0.93rem !important;
+    }
+
+    /* Fix heading spacing */
+    .cyber-box h2 {
+        font-size: 1.25rem !important;
+        margin-bottom: 12px !important;
+    }
+}
+
+/* ================= HERO BANNER ================= */
+.hero-banner {
+  width: 100%;
+  height: 70vh;                 /* laptop height */
+  max-height: 650px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Banner image */
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* keeps image clean */
+  object-position: center;
+  display: block;
+}
+
+/* ========== Tablet ========== */
+@media (max-width: 992px) {
+  .hero-banner {
+    height: 50vh;
+  }
+}
+
+/* ========== Mobile ========== */
+@media (max-width: 600px) {
+  .hero-banner {
+    height: 40vh;
+  }
+}
+/* ================= SMALL BUSINESS SECTION ================= */
+.sb-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    max-width: 1300px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+/* Left + Right Columns */
+.sb-left, .sb-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Boxes */
+.sb-box {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px 25px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    text-align: justify;
+}
+
+/* Icon inside box */
+.sb-icon {
+    width: 80px;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+/* Right-side top image */
+.sb-main-img {
+    width: 100%;
+    border-radius: 14px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Tighten mobile spacing */
+@media (max-width: 992px) {
+    .sb-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .sb-box {
+        padding: 18px 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sb-container {
+        margin: 20px auto;
+    }
+
+    .sb-box {
+        padding: 15px;
+    }
+
+    .sb-main-img {
+        width: 100%;
+    }
+}
+/* ================= CTA SECTION ================= */
+.cta-section {
+    width: 100%;
+    background: #0a62ff;       /* Blue background */
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    text-align: left;
+    color: #ffffff;
+}
+
+/* Headings */
+.cta-content h2 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.cta-content h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Description */
+.cta-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* BUTTON */
+.cta-button {
+    display: inline-block;
+    background: #14c545;
+    color: #ffffff;
+    padding: 12px 26px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background: #0ea63a;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 600px) {
+
+    .cta-section {
+        padding: 60px 15px;
+        text-align: center;
+    }
+
+    .cta-content h2 {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .cta-content h3 {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    .cta-content p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .cta-button {
+        margin-top: 10px;
+    }
+}
+/* ===== SECTION STYLING ===== */
+/* === TWO BOX LAYOUT === */
+.two-box-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;    /* 2 boxes side by side */
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+/* Individual box styling */
+.info-box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  text-align: center; /* center heading */
+}
+
+/* Heading */
+.info-box h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* Paragraphs */
+.info-box p {
+  text-align: justify;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+/* List styling */
+.info-box ul {
+  text-align: justify;
+  padding-left: 18px;
+}
+
+.info-box ul li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+
+/* === MOBILE VIEW === */
+@media (max-width: 900px) {
+  .two-box-section {
+    grid-template-columns: 1fr; /* stack vertically */
+    gap: 20px;
+  }
+
+  .info-box {
+    padding: 20px;
+  }
+
+  .info-box h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .info-box {
+    padding: 18px;
+  }
+
+  .info-box h2 {
+    font-size: 1.3rem;
+  }
+
+  .info-box p,
+  .info-box ul {
+    font-size: 0.95rem;
+  }
+}
+
+/* ===== WHY TRAIN TEACHERS SECTION ===== */
+.why-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.why-container {
+  max-width: 900px;
+  text-align: center;        /* heading centered */
+  padding: 0 20px;
+}
+
+.why-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Intro paragraph justified */
+.why-container .why-intro {
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* Bullet list styling */
+.why-list {
+  text-align: justify;
+  list-style-type: disc;
+  padding-left: 20px;        /* align bullets properly */
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.why-list li {
+  margin-bottom: 5px;     /* reduced from 10px */
+  line-height: 1.4;       /* tighter spacing */
+}
+
+/* ===== MOBILE VIEW ===== */
+@media (max-width: 600px) {
+  .why-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .why-container .why-intro,
+  .why-list {
+    font-size: 0.95rem;
+  }
+}
+/* Reduce bottom space of first section */
+.edu-section {
+  margin-bottom: 0px !important;
+  padding-bottom: 10px;   /* optional, keeps a small clean gap */
+}
+
+/* Reduce top space of second section */
+.why-section {
+  margin-top: 0px !important;
+  padding-top: 5px;      /* optional */
+}
+/* ===========================================
+   TWO COLUMN LAYOUT (LEFT BOXES + RIGHT IMAGE IN MIDDLE)
+=========================================== */
+
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+  max-width: 1300px;
+  margin: 40px auto;
+  padding: 20px;
+  align-items: center; /* ⭐ Centers image vertically between boxes */
+}
+
+/* LEFT COLUMN — STACK TWO BOXES */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* BOX DESIGN */
+.info-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.info-box h2 {
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.info-box p,
+.info-box ul {
+  text-align: justify;
+}
+
+/* RIGHT COLUMN IMAGE */
+.right-column {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* ⭐ Keeps the image centered */
+}
+
+.right-column img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+/* ===========================================
+                RESPONSIVE
+=========================================== */
+
+@media (max-width: 900px) {
+  .two-column-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .right-column img {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .info-box {
+    padding: 20px;
+  }
+
+  .info-box h2 {
+    font-size: 1.5rem;
+  }
+
+  .right-column img {
+    max-width: 100%;
+  }
+}
+
+/* ===== KEY PROGRAM FEATURES HEADING ===== */
+.features-title-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;        /* adjust spacing above */
+  margin-bottom: 10px;     /* spacing below */
+  padding: 0 20px;
+}
+
+.features-title-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+/* === FEATURE BOX SECTION === */
+.program-feature-boxes {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.feature-grid {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* 2 boxes per row on laptop */
+  gap: 30px;  /* more balanced spacing */
+}
+
+/* Feature Card */
+.feature-card {
+  background: #eef3f8;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* equal height */
+}
+
+/* Title */
+.feature-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Paragraph */
+.feature-card p {
+  text-align: justify;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* List */
+.feature-card ul {
+  text-align: justify;
+  list-style-type: disc;
+  padding-left: 18px;
+}
+
+.feature-card ul li {
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+/* === RESPONSIVE FIXES === */
+
+/* Tablet (2 columns) */
+@media (max-width: 900px) {
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+}
+/* MOBILE FIX (max-width: 600px) */
+@media (max-width: 600px) {
+
+  .program-feature-boxes {
+    padding: 10px;              /* reduce outer spacing */
+    margin-top: 10px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr; /* single column */
+    gap: 10px !important;       /* reduce spacing between cards */
+  }
+
+  .feature-card {
+    padding: 15px !important;   /* reduce inside spacing */
+    margin: 0 !important;       /* avoid extra gaps */
+  }
+
+  .feature-card h3 {
+    margin-bottom: 6px !important;
+    font-size: 1rem;
+  }
+
+  .feature-card p {
+    margin-bottom: 8px !important;
+    line-height: 1.4;
+  }
+
+  .feature-card ul li {
+    margin-bottom: 4px !important;
+    line-height: 1.3;
+  }
+}
+/* FINAL FIX FOR MOBILE SPACING — SCHOOL PAGE */
+@media (max-width: 600px) {
+
+  /* Reduce padding + tighten spacing inside boxes */
+  .feature-card {
+    padding: 14px 12px !important;
+    margin: 0 !important;
+    border-radius: 10px;
+  }
+
+  /* Fix heading spacing */
+  .feature-card h3 {
+    font-size: 1.05rem !important;
+    margin-bottom: 6px !important;
+    text-align: center;
+  }
+
+  /* Fix paragraph spacing */
+  .feature-card p {
+    font-size: 0.92rem !important;
+    line-height: 1.35 !important;
+    margin-bottom: 6px !important;
+    text-align: justify;
+  }
+
+  /* Fix list spacing */
+  .feature-card ul {
+    padding-left: 15px !important;
+    margin-top: 4px !important;
+  }
+
+  .feature-card ul li {
+    font-size: 0.9rem !important;
+    margin-bottom: 4px !important;
+    line-height: 1.28 !important;
+  }
+
+  /* Reduce gap between boxes */
+  .feature-grid {
+    gap: 12px !important;
+  }
+
+  /* Fix outer section spacing */
+  .program-feature-boxes {
+    padding: 8px !important;
+    margin-top: 10px !important;
+  }
+}
+
+/* ============================================================= */
+/*  SCHOOL PAGE — WHY SCHOOLS CHOOSE ADVAITECS SECTION           */
+/*  (Unique class names so index.html is not affected)           */
+/* ============================================================= */
+
+.school-choose-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.school-choose-container {
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Heading */
+.school-choose-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* Bullet list */
+.school-choose-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.school-choose-list li {
+  margin-bottom: 6px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .school-choose-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .school-choose-list {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+
+  .school-choose-section {
+    padding: 15px;
+  }
+}
+/* LEFT-ALIGNED BUTTON */
+.school-left-btn-wrap {
+  width: 100%;
+  max-width: 1200px;  /* Match your page width */
+  margin: 20px auto 0;
+  display: flex;
+  justify-content: flex-start;   /* LEFT SIDE */
+  padding-left: 20px;            /* small spacing from edge */
+}
+
+.school-left-btn {
+  background-color: #0d6efd;
+  color: white;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.school-left-btn:hover {
+  background-color: #0958cc;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .school-left-btn-wrap {
+    padding-left: 10px;  /* smaller space on mobile */
+  }
+
+  .school-left-btn {
+    font-size: 1rem;
+    padding: 10px 22px;
+  }
+}
+.school-left-btn-wrap {
+  width: 100%;
+  max-width: 1200px;
+  margin: 38px auto 38px;   /* top: 1cm, bottom: 1cm */
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
